@@ -39,3 +39,23 @@
 
 ## SSR
 请求到来的时候运行getServerSidePropse
+
+# Docker使用
+## 启动数据库postgresql
+```js
+docker run -v "$PWD/blog-data":/var/lib/postgresql/data -p 5432:5432 -e POSTGRES_USER=blog -e POSTGRES_HOST_AUTH_METHOD=trust -d postgres:12.2
+```
+  * docker ps       --- 看进程
+  * docker ps -a    --- 看所有进程
+
+## 验证PG（postgresql）
+进入docker 容器
+```js
+$ docker exec -it 容器id bash 
+// id 找不到 docker ps 找对应id
+```
+链接pg
+```js
+psql -U blog
+```
+使用sql创建数据库
