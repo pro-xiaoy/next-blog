@@ -59,3 +59,10 @@ $ docker exec -it 容器id bash
 psql -U blog
 ```
 使用sql创建数据库
+```js
+  //# 正常来说创建三个表分别对应 development  test production
+  CREATE DATABASE blog_production ENCODING 'UTF8' LC_COLLATE 'en_US.utf8' LC_CTYPE 'en_US.utf8';
+```
+
+## next安装typeorm
+[安装文档](https://typeorm.biunav.com/zh/#%E5%AE%89%E8%A3%85)
