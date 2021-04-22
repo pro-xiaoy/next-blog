@@ -72,3 +72,7 @@ next 使用tabel  typeorm使用 node-ts ，调试半天使用babel翻译ts
 ```js
 npx babel ./src --out-dir dist --extensions ".ts,.tsx"
 ```
+创建表
+```js
+ npx typeorm migration:create -n CreatePost
+```
