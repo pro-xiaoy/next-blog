@@ -66,3 +66,9 @@ psql -U blog
 
 ## next安装typeorm
 [安装文档](https://typeorm.biunav.com/zh/#%E5%AE%89%E8%A3%85)
+
+## 统一编译方式
+next 使用tabel  typeorm使用 node-ts ，调试半天使用babel翻译ts
+```js
+npx babel ./src --out-dir dist --extensions ".ts,.tsx"
+```

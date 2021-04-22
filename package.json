@@ -7,9 +7,10 @@
       "build": "next build",
       "devpg": "ts-node src/index.ts",
       "start": "next start -p 9527"
-
    },
    "dependencies": {
+      "@babel/cli": "^7.13.16",
+      "@babel/core": "^7.13.16",
       "@types/react": "^17.0.3",
       "axios": "^0.21.1",
       "file-loader": "^6.2.0",
@@ -24,7 +25,7 @@
    "devDependencies": {
       "@types/axios": "^0.14.0",
       "@types/node": "^8.0.29",
-      "typescript": "3.3.3333",
-      "ts-node": "3.3.0"
+      "ts-node": "3.3.0",
+      "typescript": "3.3.3333"
    }
 }
