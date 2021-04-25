@@ -76,3 +76,9 @@ npx babel ./src --out-dir dist --extensions ".ts,.tsx"
 ```js
  npx typeorm migration:create -n CreatePost
 ```
+
+## typeorm生成文件问题
+注意看ormconfig.json配置里面的文件， 因为我们使用babel将src里面的包全部打成js, 注意**ormconfig**里面执行bash是ts
+
+## concurrently
+为了同时跑两个webpack命令，而不是开两个进程的方法，强烈适合windows
