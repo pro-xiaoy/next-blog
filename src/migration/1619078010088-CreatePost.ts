@@ -26,6 +26,7 @@ export class CreatePost1619078010088 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
+    console.log('111+++')
     // down 降级
     return await queryRunner.dropTable('posts')
   }

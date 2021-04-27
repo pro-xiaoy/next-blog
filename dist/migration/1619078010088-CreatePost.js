@@ -72,13 +72,15 @@ var CreatePost1619078010088 = /*#__PURE__*/function () {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
+                console.log('111+++'); // down 降级
+
+                _context2.next = 3;
                 return queryRunner.dropTable('posts');
 
-              case 2:
+              case 3:
                 return _context2.abrupt("return", _context2.sent);
 
-              case 3:
+              case 4:
               case "end":
                 return _context2.stop();
             }

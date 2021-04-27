@@ -14,26 +14,39 @@ var _Post = require("./entity/Post");
 
 (0, _typeorm.createConnection)().then( /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(connection) {
-    var p;
+    var postList;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            // const posts = await connection.manager.find(Post)
-            p = new _Post.Post();
-            p.title = 'Post 1';
-            p.content = '我的第一篇文章';
-            _context.next = 5;
-            return connection.manager.save(p);
+            _context.next = 2;
+            return connection.manager.find(_Post.Post);
 
-          case 5:
-            console.log('p+++', p); // console.log('Post+++', Post)
-            // const posts = await connection.manager.find(Post);
+          case 2:
+            postList = _context.sent;
 
-            console.log('connection+++', connection);
+            if (!(postList.length === 0)) {
+              _context.next = 7;
+              break;
+            }
+
+            _context.next = 6;
+            return connection.manager.save([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (item) {
+              return new _Post.Post({
+                title: "\u7B2C".concat(item, "\u7BC7"),
+                content: "\u8FD9\u662F\u6211\u7684\u7B2C".concat(item, "\u7BC7\u6587\u7AE0\u5185\u5BB9")
+              });
+            }));
+
+          case 6:
+            // await connection.manager.save(new Post({ title: `第1篇`, content: `这是我的第1篇文章内容` }))
+            console.log('保存成功++++');
+
+          case 7:
+            console.log('postList+++', postList);
             connection.close();
 
-          case 8:
+          case 9:
           case "end":
             return _context.stop();
         }
@@ -45,5 +58,5 @@ var _Post = require("./entity/Post");
     return _ref.apply(this, arguments);
   };
 }())["catch"](function (error) {
-  return console.log(error);
+  return console.log('error+++', error);
 });
