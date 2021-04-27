@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.CreatePost1619078010088 = void 0;
+exports.CreatePosts1619515128439 = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
@@ -17,12 +17,12 @@ var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/creat
 
 var _typeorm = require("typeorm");
 
-var CreatePost1619078010088 = /*#__PURE__*/function () {
-  function CreatePost1619078010088() {
-    (0, _classCallCheck2["default"])(this, CreatePost1619078010088);
+var CreatePosts1619515128439 = /*#__PURE__*/function () {
+  function CreatePosts1619515128439() {
+    (0, _classCallCheck2["default"])(this, CreatePosts1619515128439);
   }
 
-  (0, _createClass2["default"])(CreatePost1619078010088, [{
+  (0, _createClass2["default"])(CreatePosts1619515128439, [{
     key: "up",
     value: function () {
       var _up = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(queryRunner) {
@@ -35,22 +35,33 @@ var CreatePost1619078010088 = /*#__PURE__*/function () {
                   name: 'posts',
                   columns: [{
                     name: 'id',
-                    type: 'int',
                     isGenerated: true,
-                    generationStrategy: 'increment'
+                    type: 'int',
+                    generationStrategy: 'increment',
+                    isPrimary: true
                   }, {
                     name: 'title',
                     type: 'varchar'
                   }, {
                     name: 'content',
                     type: 'text'
+                  }, {
+                    name: 'authorId',
+                    type: 'text'
+                  }, {
+                    name: 'createdAt',
+                    type: 'timestamp',
+                    isNullable: false,
+                    "default": 'now()'
+                  }, {
+                    name: 'updatedAt',
+                    type: 'timestamp',
+                    isNullable: false,
+                    "default": 'now()'
                   }]
                 }));
 
               case 2:
-                return _context.abrupt("return", _context.sent);
-
-              case 3:
               case "end":
                 return _context.stop();
             }
@@ -72,15 +83,10 @@ var CreatePost1619078010088 = /*#__PURE__*/function () {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                console.log('111+++'); // down 降级
-
-                _context2.next = 3;
+                _context2.next = 2;
                 return queryRunner.dropTable('posts');
 
-              case 3:
-                return _context2.abrupt("return", _context2.sent);
-
-              case 4:
+              case 2:
               case "end":
                 return _context2.stop();
             }
@@ -95,7 +101,7 @@ var CreatePost1619078010088 = /*#__PURE__*/function () {
       return down;
     }()
   }]);
-  return CreatePost1619078010088;
+  return CreatePosts1619515128439;
 }();
 
-exports.CreatePost1619078010088 = CreatePost1619078010088;
+exports.CreatePosts1619515128439 = CreatePosts1619515128439;
