@@ -1,17 +1,29 @@
 import "reflect-metadata";
 import { createConnection } from "typeorm";
 import { log } from "util";
-createConnection().then(async connection => {
-    // const postList = await connection.manager.find(Post)
-    // if (postList.length === 0) {
-    //     await connection.manager.save([1,2,3,4,5,6,7,8,9,10,11].map(item => {
-    //         return new Post({title: `第${item}篇`, content: `这是我的第${item}篇文章内容`})
-    //     }))
 
-    //     // await connection.manager.save(new Post({ title: `第1篇`, content: `这是我的第1篇文章内容` }))
-    //     console.log('保存成功++++')
-    // }
-    // console.log('postList+++', postList)
-    connection.close()
+import { User } from './entity/User';
+import { Post } from './entity/Post';
+import { Comment } from './entity/Comment';
+createConnection().then(async connection => {
+    const { manager } = connection;
+    // 创建 user 1
+    const u1 = new User();
+    u1.username = 'frank';
+    u1.passwordDigest = 'xxx';
+    await manager.save(u1);
+    // 创建 post 1
+    const p1 = new Post();
+    p1.title = 'Post 1';
+    p1.content = 'My First Post';
+    p1.author = u1;
+    await manager.save(p1);
+    const c1 = new Comment();
+    c1.user = u1;
+    c1.post = p1;
+    c1.content = 'Awesome!';
+    await manager.save(c1);
+    connection.close();
+    console.log('OK!')
 
 }).catch(error => console.log('error+++', error));

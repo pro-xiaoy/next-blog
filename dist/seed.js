@@ -10,24 +10,49 @@ require("reflect-metadata");
 
 var _typeorm = require("typeorm");
 
+var _User = require("./entity/User");
+
+var _Post = require("./entity/Post");
+
+var _Comment = require("./entity/Comment");
+
 (0, _typeorm.createConnection)().then( /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(connection) {
+    var manager, u1, p1, c1;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            // const postList = await connection.manager.find(Post)
-            // if (postList.length === 0) {
-            //     await connection.manager.save([1,2,3,4,5,6,7,8,9,10,11].map(item => {
-            //         return new Post({title: `第${item}篇`, content: `这是我的第${item}篇文章内容`})
-            //     }))
-            //     // await connection.manager.save(new Post({ title: `第1篇`, content: `这是我的第1篇文章内容` }))
-            //     console.log('保存成功++++')
-            // }
-            // console.log('postList+++', postList)
-            connection.close();
+            manager = connection.manager; // 创建 user 1
 
-          case 1:
+            u1 = new _User.User();
+            u1.username = 'frank';
+            u1.passwordDigest = 'xxx';
+            _context.next = 6;
+            return manager.save(u1);
+
+          case 6:
+            // 创建 post 1
+            p1 = new _Post.Post();
+            p1.title = 'Post 1';
+            p1.content = 'My First Post';
+            p1.author = u1;
+            _context.next = 12;
+            return manager.save(p1);
+
+          case 12:
+            c1 = new _Comment.Comment();
+            c1.user = u1;
+            c1.post = p1;
+            c1.content = 'Awesome!';
+            _context.next = 18;
+            return manager.save(c1);
+
+          case 18:
+            connection.close();
+            console.log('OK!');
+
+          case 20:
           case "end":
             return _context.stop();
         }
