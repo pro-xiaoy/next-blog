@@ -14,7 +14,7 @@ const SignUp = async (req: NextApiRequest, res: NextApiResponse) => {
   user.password = password
   user.passwordConfirm = passwordConfirm
 
-  user.validate()
+  await user.validate()
   const haserror = user.hasErrors()
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
 

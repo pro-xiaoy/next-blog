@@ -32,3 +32,59 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+# 代码使用
+
+请下载本代码，然后用 WebStorm 或者 VSCode 打开。
+
+## 启动数据库
+
+如果你没有创建过数据库，请运行
+```bash
+mkdir blog-data
+docker run -v "$PWD/blog-data":/var/lib/postgresql/data -p 5432:5432 -e POSTGRES_USER=blog -e POSTGRES_HOST_AUTH_METHOD=trust -d postgres:12.2
+
+或者旧版 Windows Docker 客户端运行下面的代码
+
+docker run -v "blog-data":/var/lib/postgresql/data -p 5432:5432 -e POSTGRES_USER=blog -e POSTGRES_HOST_AUTH_METHOD=trust -d postgres:12.2
+```
+
+如果你创建过数据库，请运行
+
+```bash
+docker ps -a
+docker restart 容器id
+```
+
+## 创建数据库
+
+```
+docker exec -it <id> bash
+psql -U blog
+CREATE DATABASE blog_development ENCODING 'UTF8' LC_COLLATE 'en_US.utf8' LC_CTYPE 'en_US.utf8';
+```
+
+## 数据表
+
+首先修改 ormconfig.json 中的 host，然后运行
+
+```
+yarn m:run
+```
+
+## 开发
+
+```bash
+yarn dev
+# or
+npm run dev
+```
+
+## 部署
+
+```bash 
+yarn build
+yarn start
+```
+

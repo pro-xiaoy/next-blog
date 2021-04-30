@@ -1,31 +1,29 @@
 import { useCallback, useState } from "react"
 import axios from 'axios'
-const SignUp = () => {
+import { withSession } from 'lib/withSession';
 
+const SignUp = () => {
   const [user, setUser] = useState({
     username: '',
     password: '',
-    passwordConfirm: '',
   })
   const [errors, setErrors] = useState({
     username: '',
     password: '',
-    passwordConfirm: ''
   })
 
   const submitForm = useCallback((e) => {
     e.preventDefault()
-    axios.post('/api/v1/signup', user).then((res) => {
-      alert('注册成功')
-      window.location.href = '/sign_in'
-    }, error => {  
+    axios.post('/api/v1/session', user).then((res) => {
+      alert('登录成功')
+    }, error => {
       setErrors(error.response.data)
     })
   }, [user])
 
   return (
     <div style={{ padding: '40px' }}>
-      <h2>这是一个注册页面</h2>
+      <h2>登录</h2>
       <div>
         <form onSubmit={submitForm}>
           <div>
@@ -44,16 +42,7 @@ const SignUp = () => {
             })} />
           </div>
           {errors.password && <div style={{ color: 'red' }}>{errors.password}</div>}
-
-          <div>
-            <label>确定密码:</label>
-            <input type="text" value={user.passwordConfirm} onChange={e => setUser({
-              ...user,
-              passwordConfirm: e.target.value
-            })} />
-          </div>
-          {errors.passwordConfirm && <div style={{ color: 'red' }}>{errors.passwordConfirm}</div>}
-          <button type="submit">确定</button>
+          <button type="submit">登录</button>
         </form>
       </div>
 
@@ -62,3 +51,7 @@ const SignUp = () => {
 }
 
 export default SignUp
+
+export const getServerSideProps = withSession(async (context) => {
+  console.log('context+++++', context)
+}) 

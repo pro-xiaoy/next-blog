@@ -137,3 +137,6 @@ npx babel. / src--out - dir dist--extensions ".ts,.tsx"
 增删改查很难吗?
 
 ## reflection-data
+
+## session
+session和cookie是对应得关系,cookie是存储在客户端上,session是服务器存储得位置,就像锁和钥匙,由于你得cookie种下来以后,你每次得http请求都会看到cookie, so每次都是校验正确
