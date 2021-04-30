@@ -16,10 +16,7 @@ const SignUp = () => {
   const submitForm = useCallback((e) => {
     e.preventDefault()
     axios.post('/api/v1/signup', user).then((res) => {
-      // console.log('ress+++++')
-    }, error => {
-      console.dir('err++++', error)
-      console.log('err+r++++', error.response)
+    }, error => {  
       setErrors(error.response.data)
     })
   }, [user])

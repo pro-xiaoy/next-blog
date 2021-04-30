@@ -7,7 +7,6 @@ import { Post } from 'src/entity/Post'
 
 export default function Home(props) {
   const { posts } = props
-  console.log('posts++', posts)
   return (
     <div style={{ padding: '20px' }}>
       <h1>博文文章</h1>

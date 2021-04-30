@@ -30,7 +30,6 @@ export class User {
   }
 
   async validate() {
-    console.log('user+++++', this.username, this.password)
     if (!this.username.trim()) {
       this.errors.username = '用户名不能为空'
     }

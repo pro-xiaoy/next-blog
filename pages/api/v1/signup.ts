@@ -4,8 +4,6 @@ import { User } from "src/entity/User";
 import { getDatabaseConnection } from 'lib/getDatabaseConnection'
 
 const SignUp = async (req: NextApiRequest, res: NextApiResponse) => {
-  // const posts = await getPosts()
-  console.log('req+++', req.body)
   const { username, password, passwordConfirm } = req.body
 
   const connection = await getDatabaseConnection();// 第一次链接能不能用 get
@@ -28,7 +26,6 @@ const SignUp = async (req: NextApiRequest, res: NextApiResponse) => {
     res.statusCode = 200;
     res.write(JSON.stringify(user));
   }
-  console.log('haser++1', haserror)
   res.statusCode = 200
   res.end()
 }

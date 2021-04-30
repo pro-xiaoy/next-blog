@@ -78,8 +78,6 @@ var User = (_dec = (0, _typeorm.Entity)('users'), _dec2 = (0, _typeorm.PrimaryGe
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log('user+++++', this.username, this.password);
-
                 if (!this.username.trim()) {
                   this.errors.username = '用户名不能为空';
                 }
@@ -103,23 +101,23 @@ var User = (_dec = (0, _typeorm.Entity)('users'), _dec2 = (0, _typeorm.PrimaryGe
                 // const found = await connection.manager.find(User, { username: this.username })
 
 
-                _context.next = 8;
+                _context.next = 7;
                 return (0, _getDatabaseConnection.getDatabaseConnection)();
 
-              case 8:
-                _context.next = 10;
+              case 7:
+                _context.next = 9;
                 return _context.sent.manager.find(User, {
                   username: this.username
                 });
 
-              case 10:
+              case 9:
                 found = _context.sent;
 
                 if (found.length > 0) {
                   this.errors.username = '用户名重复';
                 }
 
-              case 12:
+              case 11:
               case "end":
                 return _context.stop();
             }
