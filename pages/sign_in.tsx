@@ -1,8 +1,11 @@
 import { useCallback, useState } from "react"
 import axios from 'axios'
 import { withSession } from 'lib/withSession';
+import { GetServerSideProps } from 'next'
 
-const SignUp = () => {
+
+const SignUp = (props) => {
+  console.log('props++++', props)
   const [user, setUser] = useState({
     username: '',
     password: '',
@@ -23,6 +26,9 @@ const SignUp = () => {
 
   return (
     <div style={{ padding: '40px' }}>
+      {props.user && <>
+        <p>你好{props.user.name}</p>
+      </>}
       <h2>登录</h2>
       <div>
         <form onSubmit={submitForm}>
@@ -51,7 +57,15 @@ const SignUp = () => {
 }
 
 export default SignUp
-
-export const getServerSideProps = withSession(async (context) => {
-  console.log('context+++++', context)
+  
+// @ts-ignore
+export const getServerSideProps: GetServerSideProps = withSession(async (context) => {
+  // @ts-ignore
+  const user = context.req.session.get('currentUser')
+  console.log('user+++', user)
+  return {
+    props: {
+      user: JSON.parse(JSON.stringify(user || ''))
+    }
+  };
 }) 
