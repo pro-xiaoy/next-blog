@@ -4,7 +4,7 @@ import { withSession } from 'lib/withSession';
 import { GetServerSideProps } from 'next'
 import { useForm } from 'hocks/useForm'
 
-const SignUp = (props) => {
+const SignIn = (props) => {
   const [user, setUser] = useState({
     username: '',
     password: '',
@@ -44,32 +44,13 @@ const SignUp = (props) => {
       <h2>登录</h2>
       <div>
         {form}
-        {/* <form onSubmit={submitForm}>
-          <div>
-            <label>用户名:</label>
-            <input type="text" value={user.username} onChange={e => setUser({
-              ...user,
-              username: e.target.value
-            })} />
-          </div>
-          {errors.username && <div style={{ color: 'red' }}>{errors.username}</div>}
-          <div>
-            <label>密码:</label>
-            <input type="text" value={user.password} onChange={e => setUser({
-              ...user,
-              password: e.target.value
-            })} />
-          </div>
-          {errors.password && <div style={{ color: 'red' }}>{errors.password}</div>}
-          <button type="submit">登录</button>
-        </form> */}
       </div>
 
     </div>
   )
 }
 
-export default SignUp
+export default SignIn
   
 // @ts-ignore
 export const getServerSideProps: GetServerSideProps = withSession(async (context) => {
