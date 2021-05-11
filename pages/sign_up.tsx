@@ -1,5 +1,7 @@
 import { useCallback, useState } from "react"
 import axios from 'axios'
+import { useForm } from 'hocks/useForm'
+
 const SignUp = () => {
 
   const [user, setUser] = useState({
@@ -13,12 +15,26 @@ const SignUp = () => {
     passwordConfirm: ''
   })
 
+  const { form } = useForm({
+    initFormData: { username: '', password: '', passwordConfirm: '' },
+    fileds: [
+      { label: '用户名', type: 'text', key: 'username', },
+      { label: '密码', type: 'password', key: 'password', },
+      { label: '确定密码', type: 'password', key: 'passwordConfirm' }
+    ],
+    buttons: <button type="submit">确定</button>,
+    submit: {
+      request: formData => axios.post(`/api/v1/signup`, formData),
+      message: '注册成功'
+    }
+  })
+
   const submitForm = useCallback((e) => {
     e.preventDefault()
     axios.post('/api/v1/signup', user).then((res) => {
       alert('注册成功')
       window.location.href = '/sign_in'
-    }, error => {  
+    }, error => {
       setErrors(error.response.data)
     })
   }, [user])
@@ -27,34 +43,7 @@ const SignUp = () => {
     <div style={{ padding: '40px' }}>
       <h2>这是一个注册页面</h2>
       <div>
-        <form onSubmit={submitForm}>
-          <div>
-            <label>用户名:</label>
-            <input type="text" value={user.username} onChange={e => setUser({
-              ...user,
-              username: e.target.value
-            })} />
-          </div>
-          {errors.username && <div style={{ color: 'red' }}>{errors.username}</div>}
-          <div>
-            <label>密码:</label>
-            <input type="text" value={user.password} onChange={e => setUser({
-              ...user,
-              password: e.target.value
-            })} />
-          </div>
-          {errors.password && <div style={{ color: 'red' }}>{errors.password}</div>}
-
-          <div>
-            <label>确定密码:</label>
-            <input type="text" value={user.passwordConfirm} onChange={e => setUser({
-              ...user,
-              passwordConfirm: e.target.value
-            })} />
-          </div>
-          {errors.passwordConfirm && <div style={{ color: 'red' }}>{errors.passwordConfirm}</div>}
-          <button type="submit">确定</button>
-        </form>
+        {form}
       </div>
 
     </div>

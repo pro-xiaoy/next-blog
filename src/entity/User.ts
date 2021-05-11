@@ -17,9 +17,9 @@ export class User {
   createdAt: Date;
   @CreateDateColumn()
   updatedAt: Date;
-  @OneToMany(type => Post, post => post.author)
+  @OneToMany('Post', 'author')
   posts: Post[]
-  @OneToMany(type => Comment, comment => comment.user)
+  @OneToMany('Comment', 'user')
   comments: Comment[]
 
   password: string;
@@ -47,10 +47,6 @@ export class User {
       this.errors.passwordConfirm = '密码不一致'
     }
 
-
-    // const connection = await getDatabaseConnection()
-    // console.log('user+++++', User)
-    // const found = await connection.manager.find(User, { username: this.username })
     const found = await (await getDatabaseConnection()).manager.find(
       User, { username: this.username });
     if (found.length > 0) {

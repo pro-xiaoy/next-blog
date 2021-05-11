@@ -2,10 +2,9 @@ import { useCallback, useState } from "react"
 import axios from 'axios'
 import { withSession } from 'lib/withSession';
 import { GetServerSideProps } from 'next'
-
+import { useForm } from 'hocks/useForm'
 
 const SignUp = (props) => {
-  console.log('props++++', props)
   const [user, setUser] = useState({
     username: '',
     password: '',
@@ -13,6 +12,19 @@ const SignUp = (props) => {
   const [errors, setErrors] = useState({
     username: '',
     password: '',
+  })
+
+  const {form} = useForm({
+    initFormData: {username: '', password: ''},
+    fileds: [
+      {label: '用户名', type: 'text', key: 'username',},
+      {label: '密码', type: 'password', key: 'password',}
+    ],
+    buttons: <button type="submit">登录</button>,
+    submit:  {
+      request: formData => axios.post(`/api/v1/session`, formData),
+      message: '登录成功'
+    }    
   })
 
   const submitForm = useCallback((e) => {
@@ -31,7 +43,8 @@ const SignUp = (props) => {
       </>}
       <h2>登录</h2>
       <div>
-        <form onSubmit={submitForm}>
+        {form}
+        {/* <form onSubmit={submitForm}>
           <div>
             <label>用户名:</label>
             <input type="text" value={user.username} onChange={e => setUser({
@@ -49,7 +62,7 @@ const SignUp = (props) => {
           </div>
           {errors.password && <div style={{ color: 'red' }}>{errors.password}</div>}
           <button type="submit">登录</button>
-        </form>
+        </form> */}
       </div>
 
     </div>
