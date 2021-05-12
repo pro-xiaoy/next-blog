@@ -67,7 +67,7 @@ docker run - v "$PWD/blog-data": /var/lib / postgresql / data - p 5432: 5432 - e
 
   + docker ps       --- 看进程
   + docker ps -a    --- 看所有进程
-
+  + docker rm id    --- 删除镜像
 ## 验证PG（postgresql）
 
 进入docker 容器
