@@ -56,7 +56,6 @@ export default SignIn
 export const getServerSideProps: GetServerSideProps = withSession(async (context) => {
   // @ts-ignore
   const user = context.req.session.get('currentUser')
-  console.log('user+++', user)
   return {
     props: {
       user: JSON.parse(JSON.stringify(user || ''))

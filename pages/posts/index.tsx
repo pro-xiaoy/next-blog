@@ -15,7 +15,6 @@ type Props = {
 }
 const postNew: NextPage<Props> = (props) => {
   const { posts, count, perPage, page, totalPage } = props
-  console.log('totalPage+++', totalPage)
   const { pager } = usePager({ page, totalPage })
 
   return (
@@ -42,11 +41,9 @@ const postNew: NextPage<Props> = (props) => {
 export default postNew
 
 export const getServerSideProps = async (context) => {
-  console.log('context.req.url+++', context.req.url)
   const page = parseInt(getUrlParam('page', context.req.url), 10) || 1
   const perPage = 3; // 每页展示多少
 
-  console.log('page+++', page)
   const connection = await getDatabaseConnection()
   const [posts, count] = await connection.manager.findAndCount(Post, {
     skip: (page - 1) * perPage,
