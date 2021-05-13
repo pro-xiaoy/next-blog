@@ -77,6 +77,11 @@ $ docker exec - it 容器id bash
 // id 找不到 docker ps 找对应id
 ```
 
+有时候会出现容器关闭
+```bash
+docker restart <id>
+```
+
 链接pg
 
 ``` js
