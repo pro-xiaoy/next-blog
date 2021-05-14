@@ -7,9 +7,11 @@ import config from 'ormconfig.json'
 
 
 const create = async () => {
+  console.log('123123+++', process.env.NODE_ENV)
   // @ts-ignore
   return createConnection({
     ...config,
+    database: process.env.NODE_ENV === 'production' ? 'blog_production' : 'blog_development',
     entities: [Post, User, Comment]
   })
 }
