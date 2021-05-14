@@ -43,7 +43,7 @@ export const useForm = (options) => {
           <div>
             <label>{filed.label}:</label>
             {filed.type === 'textarea' ?
-              <textarea />
+              <textarea onChange={e => setChange(filed.key, e.target.value)}/>
             :
               <input type={filed.type} onChange={e => setChange(filed.key, e.target.value)} />
             }
