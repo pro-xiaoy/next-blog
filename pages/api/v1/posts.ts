@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getPosts } from 'lib/posts'
 import { Post } from "src/entity/Post";
 import { getDatabaseConnection } from "lib/getDatabaseConnection";
 import { withSession } from 'lib/withSession'

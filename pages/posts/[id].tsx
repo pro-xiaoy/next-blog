@@ -1,5 +1,4 @@
 
-import { getPosts } from 'lib/posts'
 import {GetServerSideProps, NextPage} from 'next';
 import { getDatabaseConnection } from '../../lib/getDatabaseConnection'
 
