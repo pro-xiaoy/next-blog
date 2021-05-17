@@ -25,8 +25,6 @@ var _initializerWarningHelper2 = _interopRequireDefault(require("@babel/runtime/
 
 var _typeorm = require("typeorm");
 
-var _getDatabaseConnection = require("lib/getDatabaseConnection");
-
 var _md = _interopRequireDefault(require("md5"));
 
 var _lodash = _interopRequireDefault(require("lodash"));
@@ -63,7 +61,6 @@ var User = (_dec = (0, _typeorm.Entity)('users'), _dec2 = (0, _typeorm.PrimaryGe
     key: "validate",
     value: function () {
       var _validate = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
-        var found;
         return _regenerator["default"].wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -86,25 +83,14 @@ var User = (_dec = (0, _typeorm.Entity)('users'), _dec2 = (0, _typeorm.PrimaryGe
 
                 if (this.password !== this.passwordConfirm) {
                   this.errors.passwordConfirm = '密码不一致';
-                }
+                } // const found = await (await getDatabaseConnection()).manager.find(
+                //   User, { username: this.username });
+                // if (found.length > 0) {
+                //   this.errors.username = '用户名重复'
+                // }
 
-                _context.next = 7;
-                return (0, _getDatabaseConnection.getDatabaseConnection)();
 
-              case 7:
-                _context.next = 9;
-                return _context.sent.manager.find(User, {
-                  username: this.username
-                });
-
-              case 9:
-                found = _context.sent;
-
-                if (found.length > 0) {
-                  this.errors.username = '用户名重复';
-                }
-
-              case 11:
+              case 5:
               case "end":
                 return _context.stop();
             }
