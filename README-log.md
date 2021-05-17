@@ -68,24 +68,26 @@ docker run - v "$PWD/blog-data": /var/lib / postgresql / data - p 5432: 5432 - e
   + docker ps       --- 看进程
   + docker ps -a    --- 看所有进程
   + docker rm id    --- 删除镜像
+
 ## 验证PG（postgresql）
 
 进入docker 容器
 
 ``` js
-$ docker exec -it 容器id bash
+$ docker exec - it 容器id bash
 // id 找不到 docker ps 找对应id
 ```
 
 有时候会出现容器关闭
-```bash
+
+``` bash
 docker restart <id>
 ```
 
 链接pg
 
 ``` js
-psql -U blog
+psql - U blog
 ```
 
 使用sql创建数据库
@@ -139,35 +141,61 @@ npx babel. / src--out - dir dist--extensions ".ts,.tsx"
 `concurrently` 为了同时跑两个webpack命令，而不是开两个进程的方法，强烈适合windows
 
 ## 增删改查
+
 增删改查很难吗?
 
 ## reflection-data
 
 ## session
-session和cookie是对应得关系,cookie是存储在客户端上,session是服务器存储得位置,就像锁和钥匙,由于你得cookie种下来以后,你每次得http请求都会看到cookie, so每次都是校验正确
 
+session和cookie是对应得关系, cookie是存储在客户端上, session是服务器存储得位置, 就像锁和钥匙, 由于你得cookie种下来以后, 你每次得http请求都会看到cookie, so每次都是校验正确
 
 ## docker 
-```bash
+
+``` bash
 docker run -v /home/blog/blog-data:/var/lib/postgresql/data -p 5432:5432 -e POSTGRES_USER=blog -e POSTGRES_HOST_AUTH_METHOD=trust -d postgres:12.2
 
 docker build . -t fang/node-web-app
 ```
+
 ## liux
+
 版本: centos 7.x
+
 ### node
+
 [node安装教学](https://linuxize.com/post/how-to-install-node-js-on-centos-7/)
 
 ### 切换用户
+
 su - <username>
 
 ### docker build
-```bash
+
+``` bash
+# 创建数据库
 docker run -v /home/blog/blog-data:/var/lib/postgresql/data -p 5432:5432 -e POSTGRES_USER=blog -e POSTGRES_HOST_AUTH_METHOD=trust -d postgres:12.2
 
+# 创建Node 应用
 docker build . -t fang/node-web-app
 
 docker run -p 9527:9527 -d fang/node-web-app
 
 ```
 
+### 踩坑
+
+当你部署到服务得时候，你访问得时候会发现  connect ECONNREFUSED, 也不知道为啥反正就是报错; 
+
+解决方法：将两个容器都删除重新配置Host:
+
+``` bash
+ docker run --network=host -v /home/blog/blog-data:/var/lib/postgresql/data -p 5432:5432 -e POSTGRES_USER=blog -e POSTGRES_HOST_AUTH_METHOD=trust -d postgres:12.2
+
+ docker build . -t fang/node-web-app
+
+ docker run --network=host -p 9527:9527 -d fang/node-web-app
+```
+## 网页制作
+### logo 
+hatchful
