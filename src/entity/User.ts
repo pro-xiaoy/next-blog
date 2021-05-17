@@ -1,7 +1,7 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, OneToMany, BeforeInsert } from "typeorm";
 import { Post } from './Post'
 import { Comment } from './Comment';
-import { getDatabaseConnection } from 'lib/getDatabaseConnection'
+// import { getDatabaseConnection } from 'lib/getDatabaseConnection'
 import md5 from "md5";
 import _ from 'lodash'
 
@@ -47,11 +47,11 @@ export class User {
       this.errors.passwordConfirm = '密码不一致'
     }
 
-    const found = await (await getDatabaseConnection()).manager.find(
-      User, { username: this.username });
-    if (found.length > 0) {
-      this.errors.username = '用户名重复'
-    }
+    // const found = await (await getDatabaseConnection()).manager.find(
+    //   User, { username: this.username });
+    // if (found.length > 0) {
+    //   this.errors.username = '用户名重复'
+    // }
   }
 
   hasErrors = () => {
