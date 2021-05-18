@@ -1,5 +1,13 @@
 import { NextPage } from "next"
 import Link from 'next/link'
+const articleList = [
+  { name: 'React-Grid-Layout(译文) 中文文档', url: 'https://juejin.cn/post/6955407177624322055' },
+  { name: 'umi 改less JS stackrace', url: 'https://juejin.cn/post/6937909648561438734' },
+  { name: '前端项目组图片管理', url: 'https://juejin.cn/post/6909337230200799239' },
+  { name: '浅谈图片上传及压缩文件', url: 'https://juejin.cn/post/6908534056036761607' },
+  { name: 'flutter 签名保存本地', url: 'https://juejin.cn/post/6901494361066848270' },
+
+]
 const Home: NextPage = () => {
   return (
     <>
@@ -28,7 +36,7 @@ const Home: NextPage = () => {
             <article className="posts">
               <header className="post-title">我的经历</header>
               <div className="post-content">
-                <p>毕业于XXXXX00</p>
+                <p>2017年毕业于滁州学院,先后在上海证卷交易所、东方头条担任前端工程师。 现在在南京旻投电力科学院担任高级前端。</p>
                 <p><Link href="/"><a>查看详情</a></Link> </p>
               </div>
             </article>
@@ -36,9 +44,9 @@ const Home: NextPage = () => {
               <header className="post-title">我的文章</header>
               <div className="post-content">
                 <ul>
-                  <li><Link href="/"><a>React-Grid-Layout(译文) 中文文档</a></Link></li>
-                  <li><Link href="/"><a>React-Grid-Layout(译文) 中文文档</a></Link></li>
-                  <li><Link href="/"><a>React-Grid-Layout(译文) 中文文档</a></Link></li>
+                  {articleList.map(item => (
+                    <li><Link href={item.url} ><a target="_blank">{item.name}</a></Link></li>
+                  ))}
                 </ul>
               </div>
               <p><Link href="/"><a>查看详情</a></Link> </p>
@@ -67,7 +75,6 @@ const Home: NextPage = () => {
           padding-top: 2em;
           color: #a9a9b3;
         }
-
         .copyright {
           font-size: 14px;
         }
