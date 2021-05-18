@@ -7,9 +7,26 @@ body {
   font-size: 11pt;
 }
 
+html::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+html::-webkit-scrollbar-thumb {
+  height: 40px;
+  background-color: #eee;
+  border-radius: 16px;
+}
+
 a {
-  color: inherit;
+  color: #2d96bd;
   text-decoration: none;
+  transition: color .2s ease, border-color .2s ease, background .2s ease, opacity .2s ease;
+}
+
+a:hover {
+  color: #ef3982;
+
 }
 
 * {
