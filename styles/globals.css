@@ -31,3 +31,54 @@ a:hover {
 * {
   box-sizing: border-box;
 }
+
+.container {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+  line-height: 2rem;
+  padding-top: 2em;
+  color: #a9a9b3;
+}
+.copyright {
+  font-size: 14px;
+}
+
+.simpleintro {
+  line-height: 1;
+}
+
+.simpleintro i {
+  font-size: 14px;
+}
+
+.navbar {
+  padding: 1em 0;
+  width: 100%;
+}
+
+.navbar .container {
+  max-width: 1200px;
+  width: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.navbar-right>a {
+  padding: 0 8px;
+  color: #161209;
+}
+.navbar-right>a.selectd {
+  font-weight: bold;
+}
+.post-warp {
+  width: auto;
+  max-width: 780px;
+  margin: 0 auto;
+}
