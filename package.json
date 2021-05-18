@@ -3,7 +3,7 @@
    "version": "0.1.0",
    "private": true,
    "scripts": {
-      "dev": "concurrently \"next dev -p 9528\" \"babel -w ./src --out-dir dist --extensions .ts,.tsx\" ",
+      "dev": "concurrently \"next dev -p 9527\" \"babel -w ./src --out-dir dist --extensions .ts,.tsx\" ",
       "build": "next build",
       "devpg": "ts-node src/index.ts",
       "start": "next start -p 9527",
