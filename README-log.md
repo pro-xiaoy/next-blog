@@ -192,9 +192,11 @@ docker run -p 9527:9527 -d fang/node-web-app
 ``` bash
  docker run --network=host -v /home/blog/blog-data:/var/lib/postgresql/data -p 5432:5432 -e POSTGRES_USER=blog -e POSTGRES_HOST_AUTH_METHOD=trust -d postgres:12.2
 
- docker build . -t fang/node-web-app
+## 进入Linux之后首先要
+  yarn build
 
- docker run --network=host -p 9527:9527 -d fang/node-web-app
+  docker build . -t fang/node-web-app
+  docker run --network=host -p 9527:9527 -d fang/node-web-app
 ```
 ## 网页制作
 ### logo 

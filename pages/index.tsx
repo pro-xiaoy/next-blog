@@ -11,63 +11,68 @@ const articleList = [
 const Home: NextPage = () => {
   return (
     <>
-      <nav className="navbar">
-        <div className="container">
-          <div>
-            方阳阳个人主站
+      <div className="container">
+        <nav className="navbar">
+          <div className="container">
+            <div>
+              方阳阳个人主站
           </div>
-          <div className="navbar-right">
-            <Link href={'/'}><a>搜索</a></Link>
-            <Link href={'/'}><a>首页</a></Link>
-            <Link href={'/'}><a>文章</a></Link>
-            <Link href={'/'}><a>联系本人</a></Link>
-          </div>
-        </div>
-      </nav>
-      <main>
-        <div className="container">
-          <div className="post-warp">
-            <div className="intro">
-              <div className="avatar">
-                <img style={{ width: '390px' }} src="/logo.png" alt="" />
-              </div>
-              <h3> 天雨大不润无根之草，佛法宽只度有缘之人</h3>
+            <div className="navbar-right">
+              <Link href={'/'}><a>搜索</a></Link>
+              <Link href={'/'}><a>首页</a></Link>
+              <Link href={'/'}><a>文章</a></Link>
+              <Link href={'/'}><a>联系本人</a></Link>
             </div>
-            <article className="posts">
-              <header className="post-title">我的经历</header>
-              <div className="post-content">
-                <p>2017年毕业于滁州学院,先后在上海证卷交易所、东方头条担任前端工程师。 现在在南京旻投电力科学院担任高级前端。</p>
+          </div>
+        </nav>
+        <main>
+          <div className="container">
+            <div className="post-warp">
+              <div className="intro">
+                <div className="avatar">
+                  <img style={{ width: '390px' }} src="/logo.png" alt="" />
+                </div>
+                <h3> 天雨大不润无根之草,佛法宽只度有缘之人</h3>
+              </div>
+              <article className="posts">
+                <header className="post-title">我的经历</header>
+                <div className="post-content">
+                  <p>2017年毕业于滁州学院, 先后在上海证卷交易所、东方头条担任前端工程师。 现在在南京旻投电力科学院担任高级前端。</p>
+                  <p><Link href="/"><a>查看详情</a></Link> </p>
+                </div>
+              </article>
+              <article className="posts">
+                <header className="post-title">我的文章</header>
+                <div className="post-content">
+                  <ul>
+                    {articleList.map(item => (
+                      <li><Link href={item.url} ><a target="_blank">{item.name}</a></Link></li>
+                    ))}
+                  </ul>
+                </div>
                 <p><Link href="/"><a>查看详情</a></Link> </p>
-              </div>
-            </article>
-            <article className="posts">
-              <header className="post-title">我的文章</header>
-              <div className="post-content">
-                <ul>
-                  {articleList.map(item => (
-                    <li><Link href={item.url} ><a target="_blank">{item.name}</a></Link></li>
-                  ))}
-                </ul>
-              </div>
-              <p><Link href="/"><a>查看详情</a></Link> </p>
-            </article>
+              </article>
+            </div>
           </div>
-        </div>
-      </main>
-      <footer className="footer">
-        <div className="copyright">
-          <div className="simpleintro">
-            <i className="iconfont icon-banquan"></i>
-            <span>2013-2021</span>
-            <i className="iconfont icon-love1"></i>
-            <span>方阳阳</span>
+        </main>
+        <footer className="footer">
+          <div className="copyright">
+            <div className="simpleintro">
+              <i className="iconfont icon-banquan"></i>
+              <span>2013-2021</span>
+              <i className="iconfont icon-love1"></i>
+              <span>方阳阳</span>
+            </div>
+            <div>
+              <span>Powered by Hugo & LeaveIt</span>
+            </div>
           </div>
-          <div>
-            <span>Powered by Hugo & LeaveIt</span>
-          </div>
-        </div>
-      </footer>
-      <style jsx>{`
+        </footer>
+        <style jsx>{`
+        .container {
+          padding-left: 1em;
+          padding-right: 1em;
+        }
         .footer {
           width: 100%;
           text-align: center;
@@ -160,6 +165,8 @@ const Home: NextPage = () => {
           margin: 0 auto;
         }
       `}</style>
+      </div>
+
     </>
   )
 }
