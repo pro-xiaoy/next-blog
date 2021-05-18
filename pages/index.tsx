@@ -1,5 +1,6 @@
 import { NextPage } from "next"
 import Link from 'next/link'
+
 const articleList = [
   { name: 'React-Grid-Layout(译文) 中文文档', url: 'https://juejin.cn/post/6955407177624322055' },
   { name: 'umi 改less JS stackrace', url: 'https://juejin.cn/post/6937909648561438734' },
@@ -38,7 +39,7 @@ const Home: NextPage = () => {
                 <header className="post-title">我的经历</header>
                 <div className="post-content">
                   <p>2017年毕业于滁州学院, 先后在上海证卷交易所、东方头条担任前端工程师。 现在在南京旻投电力科学院担任高级前端。</p>
-                  <p><Link href="/"><a>查看详情</a></Link> </p>
+                  <p><Link href="/me/resume"><a>查看详情</a></Link> </p>
                 </div>
               </article>
               <article className="posts">
@@ -46,7 +47,7 @@ const Home: NextPage = () => {
                 <div className="post-content">
                   <ul>
                     {articleList.map(item => (
-                      <li><Link href={item.url} ><a target="_blank">{item.name}</a></Link></li>
+                      <li key={item.url}><Link href={item.url} ><a target="_blank">{item.name}</a></Link></li>
                     ))}
                   </ul>
                 </div>
@@ -166,7 +167,6 @@ const Home: NextPage = () => {
         }
       `}</style>
       </div>
-
     </>
   )
 }
