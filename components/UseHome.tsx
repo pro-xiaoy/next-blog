@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useHeader } from 'hocks/useHeader'
 import { useFooter } from 'hocks/useFooter'
 
