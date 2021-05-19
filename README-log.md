@@ -201,3 +201,7 @@ docker run -p 9527:9527 -d fang/node-web-app
 ## 网页制作
 ### logo 
 hatchful
+
+### 在linux上面设置了NODE_ENV之后yarn装不到devDependencies内容
+yarn install --production false
+> 傻逼百度搜了半天都没搜到
