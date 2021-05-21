@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export const useFooter = (options) => {
   const footpage = (
     <footer className="footer">
@@ -14,6 +12,22 @@ export const useFooter = (options) => {
         <span>Powered by Hugo & LeaveIt</span>
       </div>
     </div>
+    <style jsx>{`
+              
+        .copyright {
+          font-size: 14px;
+        }
+
+        .simpleintro {
+          line-height: 1;
+        }
+
+        .simpleintro i {
+          font-size: 14px;
+        }
+
+      
+      `}</style>
   </footer>
   )
 

@@ -15,7 +15,6 @@ type Props = {
 }
 const Home: NextPage<Props> = (props) => {
   const { pathUrl } = props
-  console.log('pathUrl+++', pathUrl)
   const content = () => (
     <>
       <div>
@@ -107,10 +106,9 @@ const Home: NextPage<Props> = (props) => {
 export default Home
 
 export async function getServerSideProps(context) {
-  console.log('111++++', context.req.url)
   return {
     props: {
-      pathUrl: context.req.url,
+      pathUrl: context.resolvedUrl,
     }
   }
 }

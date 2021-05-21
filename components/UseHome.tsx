@@ -2,15 +2,14 @@ import { useHeader } from 'hocks/useHeader'
 import { useFooter } from 'hocks/useFooter'
 
 const UseHome = (props) => {
-  console.log('props++++', props)
-  const { pathUrl } = props
-  const { headpage } = useHeader({pathUrl})
+  const { pathUrl = '/' } = props
+  const { headpage } = useHeader({ pathUrl })
   const { footpage } = useFooter({})
   return (
     <>
-      <div className="container">
+      <div className="wrapper">
         {headpage}
-        <main>
+        <main className="main">
           <div className="container">
             <div className="post-warp">
               {props.children}
@@ -19,6 +18,15 @@ const UseHome = (props) => {
         </main>
         {footpage}
       </div>
+      <style>{`
+        .main {
+          flex: 1 0 auto;
+        }
+        .main .container {
+          padding-left: 1em;
+           padding-right: 1em;
+        }
+      `}</style>
     </>
   )
 }
