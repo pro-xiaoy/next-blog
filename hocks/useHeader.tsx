@@ -14,7 +14,7 @@ export const useHeader = (options) => {
     <nav className="navbar">
       <div className="container">
         <div>
-          方阳阳个人主站
+          xiaoy个人主站
           </div>
         <div className="navbar-right">
           {navList.map(item => (
